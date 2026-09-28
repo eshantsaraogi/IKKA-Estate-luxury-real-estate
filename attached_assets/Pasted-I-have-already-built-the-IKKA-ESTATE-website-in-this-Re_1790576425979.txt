@@ -1,0 +1,584 @@
+I have already built the IKKA ESTATE website in this Replit project.
+
+DO NOT rebuild the website from scratch.
+
+First, thoroughly inspect the existing codebase, database, routes, authentication, frontend, backend, admin panel and deployment configuration.
+
+My goal now is to make the website fully manageable by me through the Admin Panel.
+
+==================================================
+PROJECT
+==================================================
+
+Brand: IKKA ESTATE
+
+Business:
+Luxury Real Estate
+Markets:
+- Dubai, UAE
+- Delhi, India
+
+Brand style:
+- Ultra-high-end luxury
+- Minimal
+- Ivory background
+- Black typography
+- Editorial / architectural aesthetic
+- No unnecessary gold or flashy colors
+
+==================================================
+STEP 1 — FULL WEBSITE AUDIT
+==================================================
+
+Before changing anything, inspect the complete existing application.
+
+Check:
+
+- Next.js architecture
+- Frontend
+- Backend
+- Database
+- Prisma/schema if present
+- API routes
+- Server actions
+- Authentication
+- Admin panel
+- Property management
+- Blog CMS
+- Image upload system
+- SEO
+- Sitemap
+- Robots.txt
+- Metadata
+- Structured data
+- Contact forms
+- WhatsApp integration
+- Environment variables
+- Security
+- Mobile responsiveness
+- Performance
+- Broken routes
+- Broken components
+- TypeScript errors
+- Build errors
+
+Do NOT unnecessarily replace working code.
+
+Preserve the existing design unless something is broken or needs improvement.
+
+==================================================
+STEP 2 — ADMIN LOGIN
+==================================================
+
+Find the existing admin authentication system.
+
+I need a secure admin login so I can manage the website myself.
+
+Admin route should be:
+
+/admin
+
+If an admin authentication system already exists:
+
+- Keep it.
+- Verify that it works.
+- Tell me exactly how I can log in.
+- Identify where the admin credentials are configured.
+
+If an admin account does NOT exist:
+
+Create a secure initial admin account setup.
+
+IMPORTANT:
+
+DO NOT expose passwords in frontend code.
+
+DO NOT hard-code a plaintext production password into the application.
+
+Use environment variables or a secure database-backed authentication system.
+
+Create an admin setup mechanism using environment variables such as:
+
+ADMIN_EMAIL
+ADMIN_PASSWORD
+
+or an equivalent secure setup.
+
+Hash the password before storing it.
+
+==================================================
+STEP 3 — ADMIN DASHBOARD
+==================================================
+
+Make sure /admin contains a professional dashboard.
+
+Dashboard should show:
+
+Total Properties
+Published Properties
+Draft Properties
+Featured Properties
+Total Enquiries
+Total Blog Posts
+Published Blog Posts
+
+Include quick actions:
+
++ Add Property
++ Add Blog Post
+View Enquiries
+Manage Properties
+Manage Blogs
+Website Settings
+
+==================================================
+STEP 4 — PROPERTY MANAGEMENT
+==================================================
+
+I need to be able to add and manage my own properties without touching the code.
+
+Create/verify:
+
+/admin/properties
+
+Features:
+
+- Add property
+- Edit property
+- Delete property
+- Duplicate property
+- Publish
+- Unpublish
+- Draft
+- Featured
+- Search
+- Filter
+- Sort
+- Pagination
+
+Property form should include:
+
+Property title
+Property slug
+Description
+Short description
+Country
+City
+Area/location
+Property type
+Buy/Rent
+Price
+Currency
+Bedrooms
+Bathrooms
+Built-up area
+Plot area
+Area unit
+Developer
+Completion status
+Completion date
+Amenities
+Property features
+Latitude
+Longitude
+Featured image
+Multiple property images
+Image ordering
+Floor plans
+Brochure
+Video URL
+Virtual tour URL
+
+SEO fields:
+
+SEO title
+SEO description
+SEO keywords
+Canonical URL
+OG image
+Image alt text
+
+==================================================
+STEP 5 — PROPERTY IMAGES
+==================================================
+
+Make sure I can upload multiple images from the Admin Panel.
+
+I should be able to:
+
+- Upload
+- Preview
+- Delete
+- Reorder
+- Select featured image
+- Add alt text
+
+Images should be optimized automatically.
+
+Do not expose storage credentials.
+
+If the current application uses local storage and that is unsuitable for production, prepare the architecture for Cloudinary, S3 or another proper cloud storage provider.
+
+==================================================
+STEP 6 — BLOG MANAGEMENT
+==================================================
+
+Create/verify:
+
+/admin/blog
+
+I should be able to create blog posts without touching code.
+
+Features:
+
+Create
+Edit
+Delete
+Draft
+Publish
+Unpublish
+Schedule
+Featured post
+Categories
+Tags
+Featured image
+Author
+Slug
+
+Rich text editor should support:
+
+Headings
+Paragraphs
+Bold
+Italic
+Lists
+Links
+Images
+Quotes
+Tables where appropriate
+
+SEO fields:
+
+SEO title
+Meta description
+Keywords
+Canonical URL
+OG image
+Alt text
+
+Blog URL:
+
+/blog/[slug]
+
+==================================================
+STEP 7 — WEBSITE SETTINGS
+==================================================
+
+Create an Admin Settings section.
+
+I should be able to change:
+
+Company name
+Logo
+Favicon
+Email
+Phone
+WhatsApp
+Office address
+Dubai office information
+Delhi office information
+Instagram
+LinkedIn
+Facebook
+X
+Homepage headline
+Homepage description
+Footer text
+Social links
+
+SEO defaults:
+
+Default SEO title
+Default meta description
+Default OG image
+Google Search Console verification
+Google Analytics ID
+Google Tag Manager ID
+
+Do NOT hard-code these values into components if they can reasonably be managed through settings.
+
+==================================================
+STEP 8 — HOMEPAGE MANAGEMENT
+==================================================
+
+Where practical, make important homepage content editable through the Admin Panel.
+
+I should be able to manage:
+
+Hero headline
+Hero description
+Hero image/video
+CTA buttons
+Featured properties
+About section
+Market sections
+Dubai section
+Delhi section
+Blog section
+
+Do not turn every tiny visual element into a CMS field.
+
+Keep the admin interface simple.
+
+==================================================
+STEP 9 — ENQUIRIES
+==================================================
+
+Create/verify:
+
+/admin/enquiries
+
+Whenever someone submits:
+
+Contact form
+Property enquiry
+Schedule viewing
+Request brochure
+
+store the enquiry securely.
+
+Admin should be able to:
+
+View
+Search
+Filter
+Mark as new
+Mark as contacted
+Mark as qualified
+Archive
+
+Each enquiry should show:
+
+Name
+Email
+Phone
+Country
+Message
+Property
+Date
+Status
+
+==================================================
+STEP 10 — SEO AUDIT
+==================================================
+
+Thoroughly check the existing SEO implementation.
+
+Every important page should have:
+
+Unique title
+Unique meta description
+Canonical URL
+Open Graph metadata
+Twitter/X metadata
+Proper H1
+Logical H2/H3
+Image alt text
+Internal links
+
+Verify:
+
+/sitemap.xml
+/robots.txt
+
+The sitemap should automatically include:
+
+Published properties
+Published blogs
+Important location pages
+
+Do not include unpublished properties or draft blogs.
+
+Check structured data and fix invalid schema.
+
+==================================================
+STEP 11 — URL STRUCTURE
+==================================================
+
+Use clean URLs.
+
+Examples:
+
+/properties
+/properties/dubai
+/properties/delhi
+
+/property/[slug]
+
+or preferably:
+
+/properties/[location]/[slug]
+
+Blogs:
+
+/blog
+/blog/[slug]
+
+Do not break existing URLs unnecessarily.
+
+If changing an existing URL, implement redirects.
+
+==================================================
+STEP 12 — SECURITY
+==================================================
+
+Audit the application for:
+
+Authentication vulnerabilities
+Unauthorized admin access
+SQL injection
+XSS
+CSRF
+Insecure file uploads
+Exposed API keys
+Exposed database credentials
+Weak password handling
+Unprotected API endpoints
+
+Admin APIs must require authentication.
+
+Users must NOT be able to create/edit/delete properties or blogs through public endpoints.
+
+Validate all incoming data server-side.
+
+==================================================
+STEP 13 — MOBILE & PERFORMANCE
+==================================================
+
+Test:
+
+iPhone
+Android
+Tablet
+Desktop
+
+Check:
+
+Navigation
+Property galleries
+Forms
+Admin dashboard
+Property pages
+Blog pages
+
+Optimize:
+
+Images
+Fonts
+JavaScript
+Database queries
+Caching
+Server rendering
+
+Do not sacrifice the luxury visual design for performance.
+
+==================================================
+STEP 14 — FINAL TEST
+==================================================
+
+After auditing and fixing the project:
+
+Run the production build.
+
+Fix ALL:
+
+TypeScript errors
+Build errors
+Runtime errors
+Broken links
+Console errors
+Database errors
+
+Test this complete flow:
+
+ADMIN LOGIN
+↓
+DASHBOARD
+↓
+ADD PROPERTY
+↓
+UPLOAD PROPERTY IMAGES
+↓
+SAVE PROPERTY
+↓
+PUBLISH PROPERTY
+↓
+PROPERTY APPEARS ON WEBSITE
+↓
+PROPERTY SEO METADATA WORKS
+
+Then test:
+
+ADMIN LOGIN
+↓
+CREATE BLOG
+↓
+ADD IMAGE
+↓
+ADD SEO INFORMATION
+↓
+PUBLISH BLOG
+↓
+BLOG APPEARS ON WEBSITE
+↓
+BLOG URL WORKS
+↓
+BLOG APPEARS IN SITEMAP
+
+==================================================
+VERY IMPORTANT
+==================================================
+
+Do not just tell me what is wrong.
+
+Actually inspect and fix the existing application wherever necessary.
+
+Do not rebuild working features unnecessarily.
+
+Do not replace the current luxury design with a generic template.
+
+After completing the audit, give me a concise report containing:
+
+1. Current technology stack
+2. Database used
+3. Admin login URL
+4. How admin authentication works
+5. How I can create my first admin account
+6. How I can add a property
+7. How I can upload property images
+8. How I can create a blog
+9. What information I need to configure
+10. Environment variables required
+11. Any remaining issues
+12. Deployment requirements
+
+MOST IMPORTANT:
+
+I want to be able to manage IKKA ESTATE myself after this.
+
+I should NOT need to edit source code whenever I want to:
+
+- Add a property
+- Remove a property
+- Change property information
+- Upload images
+- Publish a property
+- Add a blog
+- Edit a blog
+- Change contact information
+- Change WhatsApp
+- Change social media
+- Change important homepage content
+- Update SEO information
+
+Make the Admin Panel the central management system for the website.

@@ -1,4 +1,7 @@
 import { useMemo, useState, type FormEvent, type ReactNode } from 'react';
+import { ClerkProvider, SignIn, SignUp } from '@clerk/react';
+import { publishableKeyFromHost } from '@clerk/react/internal';
+import { shadcn } from '@clerk/themes';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import {
   ArrowDown,
@@ -41,8 +44,12 @@ import { Link, Route, Router as WouterRouter, Switch, useLocation, useParams } f
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { AdminRoute } from '@/admin';
 
 const queryClient = new QueryClient();
+const clerkPubKey = publishableKeyFromHost(window.location.hostname, import.meta.env.VITE_CLERK_PUBLISHABLE_KEY);
+const clerkProxyUrl = import.meta.env.VITE_CLERK_PROXY_URL;
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 const logoPath = '/ikka-logo-cropped.png';
 const fallbackImages = [
   'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1400',
@@ -447,11 +454,11 @@ function NotFoundPage() {
 
 function Router() {
   const [location] = useLocation();
-  return <ErrorBoundary resetKey={location}><Switch><Route path="/" component={Home} /><Route path="/properties" component={PropertiesPage} /><Route path="/properties/:slug" component={PropertyDetailPage} /><Route path="/dubai" component={() => <CityPage city="Dubai" />} /><Route path="/delhi" component={() => <CityPage city="Delhi" />} /><Route path="/about" component={AboutPage} /><Route path="/contact" component={ContactPage} /><Route path="/blog" component={BlogPage} /><Route path="/blog/:slug" component={BlogDetailPage} /><Route path="/privacy" component={() => <LegalPage type="privacy" />} /><Route path="/terms" component={() => <LegalPage type="terms" />} /><Route component={NotFoundPage} /></Switch></ErrorBoundary>;
+  return <ErrorBoundary resetKey={location}><Switch><Route path="/sign-in/*?" component={() => <div className="flex min-h-screen items-center justify-center bg-[#f1eee6] px-4"><SignIn routing="path" path={`${basePath}/sign-in`} signUpUrl={`${basePath}/sign-up`} /></div>} /><Route path="/sign-up/*?" component={() => <div className="flex min-h-screen items-center justify-center bg-[#f1eee6] px-4"><SignUp routing="path" path={`${basePath}/sign-up`} signInUrl={`${basePath}/sign-in`} /></div>} /><Route path="/admin/*?" component={AdminRoute} /><Route path="/" component={Home} /><Route path="/properties" component={PropertiesPage} /><Route path="/properties/:slug" component={PropertyDetailPage} /><Route path="/dubai" component={() => <CityPage city="Dubai" />} /><Route path="/delhi" component={() => <CityPage city="Delhi" />} /><Route path="/about" component={AboutPage} /><Route path="/contact" component={ContactPage} /><Route path="/blog" component={BlogPage} /><Route path="/blog/:slug" component={BlogDetailPage} /><Route path="/privacy" component={() => <LegalPage type="privacy" />} /><Route path="/terms" component={() => <LegalPage type="terms" />} /><Route component={NotFoundPage} /></Switch></ErrorBoundary>;
 }
 
 function App() {
-  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}><Router /></WouterRouter><Toaster /></TooltipProvider></QueryClientProvider>;
+  return <WouterRouter base={basePath}><ClerkProvider publishableKey={clerkPubKey} proxyUrl={clerkProxyUrl} appearance={{ theme: shadcn, variables: { colorPrimary: '#283c33', colorBackground: '#f1eee6', colorForeground: '#283c33', colorMutedForeground: '#65736c', fontFamily: 'DM Sans, sans-serif', borderRadius: '0px' }, options: { logoImageUrl: `${window.location.origin}${basePath}/logo.svg`, logoLinkUrl: basePath || '/' } }} signInUrl={`${basePath}/sign-in`} signUpUrl={`${basePath}/sign-up`}><QueryClientProvider client={queryClient}><TooltipProvider><Router /><Toaster /></TooltipProvider></QueryClientProvider></ClerkProvider></WouterRouter>;
 }
 
 export default App;

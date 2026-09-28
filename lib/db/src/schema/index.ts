@@ -19,3 +19,5 @@
 
 export * from "./properties";
 export * from "./enquiries";
+export * from "./blog";
+export * from "./settings";

@@ -1,0 +1,27 @@
+import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+
+export const siteSettingsTable = pgTable("site_settings", {
+  id: serial("id").primaryKey(),
+  companyName: text("company_name").notNull().default("IKKA Estate"),
+  email: text("email").notNull().default("hello@ikkaestate.com"),
+  phone: text("phone"),
+  whatsapp: text("whatsapp"),
+  officeAddress: text("office_address"),
+  dubaiOffice: text("dubai_office"),
+  delhiOffice: text("delhi_office"),
+  instagram: text("instagram"),
+  linkedin: text("linkedin"),
+  facebook: text("facebook"),
+  x: text("x"),
+  homepageHeadline: text("homepage_headline").notNull().default("The address after arrival."),
+  homepageDescription: text("homepage_description").notNull().default("Exceptional real estate across Dubai and Delhi."),
+  footerText: text("footer_text").notNull().default("Independent property advisory · Dubai / Delhi"),
+  defaultSeoTitle: text("default_seo_title").notNull().default("IKKA Estate — Exceptional real estate across Dubai and Delhi"),
+  defaultMetaDescription: text("default_meta_description").notNull().default("IKKA Estate is an independent property advisory working across Dubai and Delhi."),
+  defaultOgImage: text("default_og_image"),
+  googleVerification: text("google_verification"),
+  googleAnalyticsId: text("google_analytics_id"),
+  googleTagManagerId: text("google_tag_manager_id"),
+  logoPath: text("logo_path").default("/ikka-logo-cropped.png"),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow().$onUpdate(() => new Date()),
+});
