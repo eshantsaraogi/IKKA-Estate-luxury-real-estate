@@ -1,0 +1,1 @@
+- [Brand asset preparation](brand-asset-prep.md) — crop and prepare supplied raster marks before placing them in navigation.

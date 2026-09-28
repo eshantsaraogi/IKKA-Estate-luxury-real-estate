@@ -10,6 +10,10 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: properties
+    description: Published property discovery
+  - name: enquiries
+    description: Visitor enquiry capture
 paths:
   /healthz:
     get:
@@ -24,6 +28,75 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /properties:
+    get:
+      operationId: listProperties
+      tags: [properties]
+      summary: List published properties
+      parameters:
+        - in: query
+          name: city
+          schema: { type: string }
+        - in: query
+          name: country
+          schema: { type: string }
+        - in: query
+          name: propertyType
+          schema: { type: string }
+        - in: query
+          name: listingType
+          schema: { type: string }
+        - in: query
+          name: minBedrooms
+          schema: { type: integer, minimum: 0 }
+        - in: query
+          name: featured
+          schema: { type: boolean }
+        - in: query
+          name: q
+          schema: { type: string }
+      responses:
+        "200":
+          description: Published properties
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Property" }
+  /properties/{slug}:
+    get:
+      operationId: getProperty
+      tags: [properties]
+      summary: Get a published property by slug
+      parameters:
+        - in: path
+          name: slug
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Property detail
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/PropertyDetail" }
+        "404":
+          description: Property not found
+  /enquiries:
+    post:
+      operationId: createEnquiry
+      tags: [enquiries]
+      summary: Submit a visitor enquiry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/EnquiryInput" }
+      responses:
+        "201":
+          description: Enquiry received
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/EnquiryReceipt" }
 components:
   schemas:
     HealthStatus:
@@ -33,4 +106,80 @@ components:
           type: string
       required:
         - status
+    Property:
+      type: object
+      required:
+        - id
+        - slug
+        - title
+        - location
+        - city
+        - country
+        - propertyType
+        - listingType
+        - status
+        - priceLabel
+        - bedrooms
+        - bathrooms
+        - area
+        - areaUnit
+        - image
+        - featured
+      properties:
+        id: { type: integer }
+        slug: { type: string }
+        title: { type: string }
+        location: { type: string }
+        city: { type: string }
+        country: { type: string }
+        propertyType: { type: string }
+        listingType: { type: string }
+        status: { type: string }
+        priceLabel: { type: string }
+        bedrooms: { type: integer }
+        bathrooms: { type: integer }
+        area: { type: number }
+        areaUnit: { type: string }
+        image: { type: string }
+        imageAlt: { type: string }
+        featured: { type: boolean }
+        shortDescription: { type: string }
+    PropertyDetail:
+      allOf:
+        - $ref: "#/components/schemas/Property"
+        - type: object
+          required: [description, images, amenities, developer, completionStatus]
+          properties:
+            description: { type: string }
+            images:
+              type: array
+              items: { type: string }
+            amenities:
+              type: array
+              items: { type: string }
+            developer: { type: string }
+            completionStatus: { type: string }
+            nearby: 
+              type: array
+              items: { type: string }
+            videoUrl: { type: ["string", "null"] }
+            brochureUrl: { type: ["string", "null"] }
+    EnquiryInput:
+      type: object
+      required: [name, email, message]
+      properties:
+        name: { type: string, minLength: 2 }
+        email: { type: string, format: email }
+        phone: { type: ["string", "null"] }
+        country: { type: ["string", "null"] }
+        message: { type: string, minLength: 5 }
+        propertySlug: { type: ["string", "null"] }
+        enquiryType: { type: string }
+        preferredContact: { type: ["string", "null"] }
+    EnquiryReceipt:
+      type: object
+      required: [id, message]
+      properties:
+        id: { type: integer }
+        message: { type: string }
 

@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "IKKA Estate"
+description = "A premium luxury real estate website for IKKA Estate, connecting discerning buyers with exceptional properties across Dubai and Delhi through an editorial, architectural browsing experience."
+version = "1.0.0"
+id = "artifacts/ikka-estate"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22190
+
+[services.development]
+run = "pnpm --filter @workspace/ikka-estate run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/ikka-estate", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/ikka-estate/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22190"
+BASE_PATH = "/"

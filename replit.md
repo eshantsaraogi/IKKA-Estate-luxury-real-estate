@@ -1,6 +1,6 @@
-# [Project name]
+# IKKA Estate
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+IKKA Estate is a quiet-luxury property advisory experience for exceptional homes across Dubai and Delhi.
 
 ## Run & Operate
 
@@ -22,23 +22,36 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/ikka-estate/src/App.tsx` — public website routes, shared shell, property discovery, detail views, journal, and enquiry forms.
+- `artifacts/ikka-estate/src/index.css` — editorial visual system and responsive layout tokens.
+- `artifacts/ikka-estate/public/ikka-logo-cropped.png` — cropped transparent version of the supplied IKKA Estate mark.
+- `lib/api-spec/openapi.yaml` — source of truth for property and enquiry API contracts.
+- `artifacts/api-server/src/routes/properties.ts` — published property listing/detail API and clearly marked demo seed content.
+- `artifacts/api-server/src/routes/enquiries.ts` — persisted enquiry submission API.
+- `lib/db/src/schema/` — Drizzle schema for properties and enquiries.
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The frontend is a Vite React artifact at `/` and the existing Express service owns `/api`, with generated clients keeping contracts aligned.
+- Demo properties are seeded lazily on first property read so a fresh development database is immediately usable without presenting unverified facts as live inventory.
+- Image bytes are not stored in PostgreSQL; properties keep image URLs and the media layer can later be swapped to object storage.
+- The supplied square logo is cropped and made transparent for header use rather than displaying the original white canvas.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Visitors can browse a curated collection, filter by city/type/availability, search by neighbourhood or name, and open property detail pages.
+- Visitors can submit general or property-specific enquiries; submissions are persisted in PostgreSQL.
+- Public routes cover home, properties, Dubai, Delhi, about, contact, journal articles, legal pages, and a considered not-found experience.
+- Demo content is explicitly labelled for replacement before launch.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Preserve the quiet-luxury direction: ivory/parchment surfaces, deep green, editorial serif typography, minimal UI, and no generic real-estate portal patterns.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- The frontend build expects the artifact workflow's `PORT` and `BASE_PATH`; for a manual build use `PORT=22190 BASE_PATH=/`.
+- API changes require regenerating the typed client with `pnpm --filter @workspace/api-spec run codegen`.
 
 ## Pointers
 
