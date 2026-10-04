@@ -1,0 +1,561 @@
+FINAL PRODUCTION + GITHUB + DOCKER DEPLOYMENT PREPARATION
+
+This is the FINAL engineering pass for this project.
+
+IMPORTANT:
+This is the IKKA Estate website in THIS Replit project.
+Do not confuse it with any other project or website.
+
+My final goal is:
+
+Replit
+→ GitHub
+→ Hostinger VPS
+→ Docker deployment
+→ Production domain
+→ HTTPS/SSL
+→ Fully working production website
+
+I want you to take this project to the maximum production-ready state possible in this ONE task.
+
+DO NOT stop after fixing only one issue.
+DO NOT ask me what to fix next.
+Inspect, fix, test, and prepare everything that can safely be completed now.
+
+DO NOT deploy to production or destroy any production data.
+
+==================================================
+1. COMPLETE PROJECT AUDIT
+==================================================
+
+Inspect the ENTIRE project recursively.
+
+Identify the actual:
+- framework
+- language
+- frontend
+- backend
+- database
+- package manager
+- build system
+- runtime requirements
+- production start command
+
+Do not make assumptions.
+
+==================================================
+2. FIX ALL SAFE APPLICATION ISSUES
+==================================================
+
+Fix all issues that prevent a production build or production operation.
+
+This includes the previously identified:
+- useEffect/effect-callback issues
+- build errors
+- TypeScript errors
+- routing errors
+- broken imports
+- missing dependencies
+- incorrect configuration
+- broken asset references
+- API connection problems
+- obvious runtime errors
+
+Preserve the existing design and functionality.
+
+Do NOT redesign the website.
+
+Do NOT remove working features just to make the build pass.
+
+==================================================
+3. DEPENDENCIES
+==================================================
+
+Review all dependencies.
+
+Resolve the previously identified:
+- Clerk/React peer dependency mismatch
+- relevant security advisories
+- incompatible packages
+- missing packages
+
+Use the safest compatible versions.
+
+IMPORTANT:
+Do not perform unnecessary major upgrades.
+Do not upgrade the framework simply because a newer version exists.
+Do not introduce breaking changes.
+
+After dependency changes:
+- reinstall dependencies
+- regenerate/update the correct lockfile
+- run the complete production build
+
+==================================================
+4. ENVIRONMENT VARIABLES
+==================================================
+
+Find EVERY environment variable used by the project.
+
+Create/update a clean:
+
+.env.example
+
+containing variable names only.
+
+NEVER put real secrets into .env.example.
+
+Identify variables required for:
+- application
+- authentication / Clerk
+- database
+- storage
+- APIs
+- email
+- uploads
+- production URL
+- frontend/backend communication
+
+Do not expose any secret values in your report.
+
+==================================================
+5. SECURITY
+==================================================
+
+Perform a complete security audit.
+
+Search the entire project for:
+- API keys
+- passwords
+- tokens
+- private keys
+- credentials
+- hardcoded secrets
+- test credentials
+- exposed admin credentials
+- unsafe CORS
+- insecure authentication
+- debug configuration
+- development-only secrets
+
+Remove actual secrets from source code if they are accidentally committed, but DO NOT print them.
+
+Make sure production secrets are supplied through environment variables.
+
+==================================================
+6. GIT / GITHUB READINESS
+==================================================
+
+Create/fix the correct .gitignore for this project.
+
+It must prevent committing things such as:
+
+.env
+.env.*
+node_modules/
+.next/
+dist/
+build/
+coverage/
+cache/
+temporary files
+logs
+private keys
+credentials
+local IDE files
+OS files
+other generated files
+
+Do NOT blindly ignore source files or required deployment files.
+
+Review:
+- tracked files
+- untracked files
+- Replit-specific files
+- .conversation files
+- attached prompts
+- generated files
+
+Keep files required to build/run the application.
+
+The final GitHub repository must contain the complete source code and everything necessary to reproduce the production build, but NO secrets.
+
+==================================================
+7. DOCKER PRODUCTION DEPLOYMENT
+==================================================
+
+Prepare this project specifically for deployment on a Hostinger VPS using Docker.
+
+Create the appropriate production Docker configuration for the ACTUAL technology used by this project.
+
+If this is a Next.js application, use a proper production Docker build.
+
+Use:
+- multi-stage Docker build where appropriate
+- production dependencies only in the final image
+- Node.js version compatible with the project
+- non-development production startup
+- appropriate port configuration
+- proper environment variable handling
+- efficient Docker layer caching
+- small production image where reasonably possible
+
+Create:
+
+Dockerfile
+
+and, if appropriate:
+
+.dockerignore
+
+and:
+
+docker-compose.yml
+
+ONLY if the project benefits from Docker Compose.
+
+If a database is part of this application, design the Docker configuration so that the application can connect to an external/production database safely.
+
+DO NOT put real database credentials into Docker files.
+
+==================================================
+8. HOSTINGER VPS COMPATIBILITY
+==================================================
+
+Make the Docker setup suitable for a normal Hostinger VPS.
+
+The final application must be capable of running with:
+
+docker build
+docker run
+
+or:
+
+docker compose up -d
+
+depending on the architecture.
+
+Document the production container port.
+
+Make sure the application binds correctly for container deployment.
+
+Do not depend on Replit-specific infrastructure.
+
+Remove/replace any Replit-only runtime assumptions that would prevent external deployment.
+
+==================================================
+9. PRODUCTION CONFIGURATION
+==================================================
+
+Prepare production configuration for:
+
+- custom domain
+- HTTPS
+- reverse proxy
+- Docker
+- environment variables
+- authentication
+- API URLs
+- uploads
+- database
+- caching where applicable
+
+Do NOT put my real domain, secrets, database password, or production credentials into source code unless they are already explicitly configured as environment variables.
+
+==================================================
+10. SEO
+==================================================
+
+Verify the existing website's production SEO setup.
+
+Check:
+- page titles
+- descriptions
+- canonical URLs
+- Open Graph
+- social sharing metadata
+- sitemap
+- robots.txt
+- favicon
+- structured data where applicable
+- public routes
+- dynamic pages
+
+Do not redesign content unnecessarily.
+
+==================================================
+11. PERFORMANCE
+==================================================
+
+Perform a production performance review.
+
+Fix safe and obvious issues such as:
+- unnecessarily large assets
+- broken image optimization
+- unnecessary client-side code
+- duplicate API calls
+- obvious rendering problems
+- unnecessary dependencies
+- incorrect caching
+- development-only code
+
+Do not make risky architectural changes.
+
+==================================================
+12. BUILD + TEST
+==================================================
+
+After all fixes, run the COMPLETE production validation.
+
+Run whatever applies to this project:
+
+- dependency installation
+- type checking
+- linting
+- tests
+- production build
+- production startup test
+- route checks
+- API checks
+- asset checks
+
+If possible, build the Docker image as well.
+
+Verify that the production Docker container actually starts.
+
+DO NOT declare success based only on static inspection.
+
+==================================================
+13. FINAL PRODUCTION SMOKE TEST
+==================================================
+
+Test the important functionality of the website, including where applicable:
+
+- homepage
+- navigation
+- all public pages
+- property pages
+- property search/filtering
+- enquiry/contact forms
+- authentication
+- admin login
+- admin authorization
+- property creation/editing
+- property publishing
+- uploads
+- blog
+- settings
+- SEO routes
+- API endpoints
+
+Do not use destructive production database operations.
+
+==================================================
+14. GITHUB FINAL STATE
+==================================================
+
+Make the project ready to commit to GitHub.
+
+The repository should include:
+
+- complete source code
+- package files
+- lockfile
+- configuration files
+- Dockerfile
+- .dockerignore
+- docker-compose.yml if needed
+- .env.example
+- README.md
+- all required application files
+- all required public assets
+
+The repository must NOT include:
+
+- .env secrets
+- passwords
+- API keys
+- private keys
+- node_modules
+- build output
+- temporary files
+- unnecessary Replit-generated artifacts
+- sensitive conversation files
+
+==================================================
+15. CREATE A PRODUCTION README
+==================================================
+
+Create/update README.md with concise but complete instructions for:
+
+1. Local development
+
+2. Environment variables
+
+3. Production build
+
+4. Docker build
+
+5. Docker run
+
+6. Docker Compose if applicable
+
+7. Hostinger VPS deployment
+
+8. Required ports
+
+9. Reverse proxy requirements
+
+10. Database configuration
+
+11. Clerk/authentication configuration
+
+12. Production environment variables
+
+13. Updating the application after a GitHub push
+
+14. Basic rollback procedure
+
+Do NOT put real credentials in README.md.
+
+==================================================
+16. HOSTINGER DEPLOYMENT GUIDE
+==================================================
+
+Inside README.md, provide exact commands appropriate for this project's actual architecture.
+
+The deployment should follow this general flow:
+
+GitHub
+↓
+Hostinger VPS
+↓
+git clone
+↓
+Docker build
+↓
+Docker container
+↓
+reverse proxy
+↓
+domain
+↓
+HTTPS
+
+Use the ACTUAL commands required by this project.
+
+Do not give generic commands if the project needs something different.
+
+==================================================
+17. FINAL VERIFICATION
+==================================================
+
+After everything is fixed, run the production build again.
+
+Then verify:
+
+APPLICATION BUILD:
+PASS / FAIL
+
+DOCKER BUILD:
+PASS / FAIL
+
+DOCKER START:
+PASS / FAIL
+
+TYPECHECK:
+PASS / FAIL
+
+LINT:
+PASS / FAIL
+
+TESTS:
+PASS / FAIL / NOT CONFIGURED
+
+SECURITY:
+PASS / FAIL
+
+GITIGNORE:
+PASS / FAIL
+
+ENVIRONMENT CONFIG:
+PASS / FAIL
+
+PRODUCTION READINESS:
+READY / NOT READY
+
+==================================================
+18. FINAL REPORT
+==================================================
+
+At the very end provide ONLY a concise final deployment report containing:
+
+PROJECT:
+IKKA Estate
+
+TECH STACK:
+[actual stack]
+
+BUILD COMMAND:
+[exact command]
+
+START COMMAND:
+[exact command]
+
+DOCKER BUILD:
+[exact command]
+
+DOCKER RUN / COMPOSE:
+[exact command]
+
+PRODUCTION PORT:
+[port]
+
+REQUIRED ENVIRONMENT VARIABLES:
+[list variable names only]
+
+GITHUB STATUS:
+READY / NOT READY
+
+DOCKER STATUS:
+READY / NOT READY
+
+PRODUCTION BUILD:
+PASS / FAIL
+
+SECURITY:
+PASS / FAIL
+
+CRITICAL ISSUES:
+[list]
+
+REMAINING MANUAL STEPS:
+[list]
+
+HOSTINGER DEPLOYMENT STEPS:
+1.
+2.
+3.
+4.
+5.
+
+==================================================
+FINAL RULES
+==================================================
+
+- Do not stop after the first problem.
+- Fix every SAFE issue you can find.
+- Do not ask me what to fix next.
+- Do not redesign the website.
+- Do not remove functionality.
+- Do not expose secrets.
+- Do not commit secrets.
+- Do not perform destructive database operations.
+- Do not deploy to production.
+- Do not push to GitHub unless I explicitly authorize GitHub access.
+- Do not claim READY unless the production build has actually passed.
+- Do not claim Docker is ready unless you have actually built/tested the Docker image where the environment permits.
+- Preserve the existing website's design and functionality.
+
+THIS IS THE FINAL PRODUCTION PREPARATION PASS.
+Complete everything that can safely be completed now.
