@@ -1,0 +1,225 @@
+I am preparing THIS Replit project for production.
+
+IMPORTANT:
+This is a standalone website created in Replit. Do NOT assume it is related to any other website or project.
+
+I want to:
+1. Make sure this project is complete.
+2. Push the complete source code to GitHub.
+3. Deploy it to a production server.
+
+Before I push anything to GitHub, perform a COMPLETE READ-ONLY production readiness audit of THIS ENTIRE Replit project.
+
+DO NOT modify, delete, rename, upgrade, or install anything yet.
+
+First inspect the COMPLETE project recursively, including all folders and files.
+
+STEP 1 — IDENTIFY THE PROJECT
+
+Determine:
+- What framework is this website using?
+- What programming language(s) is it using?
+- Is it Next.js, React, Vite, Node, Express, Python, or something else?
+- Is there a backend?
+- Is there a database?
+- Is this a monorepo?
+- What is the correct production start command?
+- What is the correct production build command?
+
+Do NOT make assumptions.
+
+STEP 2 — COMPLETE FILE STRUCTURE
+
+Show me the complete relevant project structure.
+
+Identify:
+- application source files
+- pages/routes
+- components
+- public/static assets
+- configuration files
+- package/dependency files
+- build files
+- server files
+- database files
+- scripts
+- deployment files
+
+Tell me if any required file or folder appears to be missing.
+
+STEP 3 — DEPENDENCIES
+
+Inspect:
+- package.json
+- lockfiles
+- workspace files
+- configuration files
+
+Determine:
+- package manager
+- Node.js version requirement
+- required dependencies
+- production dependencies
+- build scripts
+- start scripts
+
+Do NOT upgrade anything.
+
+STEP 4 — ENVIRONMENT VARIABLES
+
+Find every environment variable referenced by the code.
+
+Create a list:
+
+VARIABLE | REQUIRED? | WHERE USED | SAFE TO COMMIT?
+
+DO NOT reveal any actual secret values.
+
+Check whether .env files or secrets are present.
+
+STEP 5 — GITHUB READINESS
+
+Inspect the existing .gitignore.
+
+Determine exactly which files should NOT be committed, including:
+- secrets
+- environment files
+- node_modules
+- build output
+- cache
+- temporary files
+- IDE files
+- Replit-specific files that should not be deployed if unnecessary
+
+Also identify which source/configuration files MUST be committed.
+
+STEP 6 — PRODUCTION BUILD
+
+Run the project's appropriate production build/test checks.
+
+Determine whether the project successfully builds for production.
+
+If it fails:
+- give the exact error
+- identify the file
+- explain the cause
+- DO NOT fix it yet
+
+STEP 7 — DEVELOPMENT/REPLIT REFERENCES
+
+Search the entire project for:
+- localhost
+- 127.0.0.1
+- Replit URLs
+- development URLs
+- temporary URLs
+- hardcoded ports
+- development-only configuration
+
+Tell me which ones need to be changed before production.
+
+STEP 8 — ASSETS
+
+Check all images, fonts, icons, videos, JSON files and other assets.
+
+Find:
+- missing assets
+- broken paths
+- incorrectly referenced files
+- assets that are required but not included
+
+STEP 9 — SECURITY
+
+Check for:
+- API keys
+- passwords
+- tokens
+- credentials
+- private keys
+- exposed secrets
+- unsafe configuration
+
+DO NOT print secret values.
+
+STEP 10 — DEPLOYMENT
+
+Determine exactly what this project requires to run outside Replit.
+
+Tell me:
+- required server/runtime
+- Node/Python/PHP/etc. version
+- build command
+- start command
+- required environment variables
+- required ports
+- whether a process manager is needed
+- whether Nginx/reverse proxy is needed
+- whether a database is required
+- whether any Replit-specific service must be replaced
+
+STEP 11 — FINAL VERDICT
+
+Give me this exact report:
+
+PROJECT TYPE:
+[answer]
+
+FRAMEWORK:
+[answer]
+
+LANGUAGE:
+[answer]
+
+PACKAGE MANAGER:
+[answer]
+
+BUILD COMMAND:
+[answer]
+
+START COMMAND:
+[answer]
+
+DATABASE:
+[answer]
+
+STATUS:
+READY / NOT READY
+
+MISSING FILES:
+[list]
+
+CRITICAL PROBLEMS:
+[list]
+
+FILES TO COMMIT TO GITHUB:
+[list/categories]
+
+FILES NOT TO COMMIT:
+[list]
+
+ENVIRONMENT VARIABLES REQUIRED:
+[list]
+
+PRODUCTION BUILD:
+PASS / FAIL
+
+SECURITY:
+PASS / FAIL
+
+DEPLOYMENT:
+READY / NOT READY
+
+BEFORE GITHUB:
+1.
+2.
+3.
+
+AFTER GITHUB:
+1.
+2.
+3.
+
+IMPORTANT:
+Do not say READY unless you have actually inspected the complete project and verified the production build.
+
+DO NOT modify anything. This is an audit only.
